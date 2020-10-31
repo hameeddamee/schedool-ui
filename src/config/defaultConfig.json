@@ -1,0 +1,13 @@
+{
+  "Auth0": {
+    "google": {
+      "clientId": ""
+    },
+    "facebook": {
+      "appId": ""
+    }
+  },
+  "Urls": {
+    "baseDev": "http://localhost:4000/api/v1"
+  }
+}
