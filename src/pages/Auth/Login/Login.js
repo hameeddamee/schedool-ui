@@ -20,6 +20,7 @@ import Input from "../../../shared/components/Form/Input";
 const Login = (props) => {
   const [t] = useTranslation("common");
   const [showPassword, setShowPassword] = useState(false);
+  document.title = t("auth.login.doc_title");
 
   const initialValues = {
     email: "",

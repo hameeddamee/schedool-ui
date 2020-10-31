@@ -15,8 +15,9 @@
       "already_have": "Already have an account?"
     },
     "login": {
+      "doc_title": "Login to your account",
       "heading": "Login",
-      "subheading": "Enter credentials",
+      "subheading": "Access your account to continue",
       "forgot_password": "Forgot password?",
       "account_not_have": "Don't have an account?"
     }
