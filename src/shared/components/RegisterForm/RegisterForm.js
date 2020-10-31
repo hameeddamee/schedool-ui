@@ -4,12 +4,14 @@ import EyeIcon2 from "mdi-react/EyeIcon";
 import { Button } from "reactstrap";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
+import { useTranslation } from "react-i18next";
 
 import { passwordPattern } from "../../helpers/validationHelpers";
 
 import Input from "../Form/Input";
 
 const RegisterForm = (props) => {
+  const [t] = useTranslation("common");
   const [showPassword, setShowPassword] = useState(false);
   const { handleSubmit, isLoading } = props;
   const initialValues = {
@@ -38,7 +40,6 @@ const RegisterForm = (props) => {
     setShowPassword(!showPassword);
   };
 
-
   return (
     <Formik
       initialValues={initialValues}
@@ -50,57 +51,51 @@ const RegisterForm = (props) => {
           <Form className="form">
             <Input
               className="input__text--field"
-              name="firstName"
+              name="name"
               type="text"
-              placeholder="First Name"
-            />
-            <Input
-              className="input__text--field"
-              name="lastName"
-              type="text"
-              placeholder="Last Name"
+              placeholder={t("auth.name")}
             />
             <Input
               className="input__text--field"
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={t("auth.email")}
             />
-            <Input
-              className="input__text--field"
-              name="phoneNumber"
-              type="text"
-              placeholder="Phone Number"
-            />
+
             <Input
               className="input__text--field"
               name="password"
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder={t("auth.password")}
             >
               <button
                 type="button"
                 className={`form__form-group-button${
-                  showPassword ? " active" : "" 
+                  showPassword ? " active" : ""
                 }`}
                 onClick={(e) => handleShowPassword(e)}
               >
-              {showPassword ? <EyeIcon2 className="mdi__icon"/> : <EyeIcon />}
+                {showPassword ? (
+                  <EyeIcon2 className="mdi__icon" />
+                ) : (
+                  <EyeIcon />
+                )}
               </button>
             </Input>
-            <div className="account__btns register__btns">
+
+            <div className="account__btns register__btns mt-2">
               <Button
                 type="submit"
                 color="primary"
                 className="account__btn account__btn--primary "
-                disabled={!formik.isValid || isLoading}
+                disabled={isLoading}
               >
                 {isLoading ? (
                   <Fragment>
                     Loading <span className="loading arrow"></span>
                   </Fragment>
                 ) : (
-                  "Sign Up"
+                  t("auth.signup.heading")
                 )}
               </Button>
             </div>

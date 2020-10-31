@@ -2,19 +2,21 @@ import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toastr } from "react-redux-toastr";
+import { useTranslation } from "react-i18next";
 
-// import logo from "../../../shared/assets/img/fitted-logo.png";
+const logo = `${process.env.PUBLIC_URL}/assets/img/landing/logo.png`;
 import { isEmpty } from "../../../shared/helpers/validationHelpers";
 import * as authAction from "../../../redux/actions/authActions";
 
 import RegisterForm from "../../../shared/components/RegisterForm/RegisterForm";
 
-const Signup = (props) => {
-  document.title = "Sign up - Create an account to continue";
+const Signup = () => {
+  const [t] = useTranslation("common");
   const dispatch = useDispatch();
   const history = useHistory();
   const isLoading = useSelector((state) => state.auth.isLoading);
   const errorMsg = useSelector((state) => state.auth.errorMsg);
+  document.title = t("auth.signup.doc_title");
 
   useEffect(() => {
     toastr.clean();
@@ -30,23 +32,24 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="account account--photo">
+    <div className="account">
       <div className="account__wrapper">
-        <div className="account__icon mb-3">{/* <img src={logo} /> */}</div>
-        <h3 className="account__name--signup mb-3 text-center">Sign up</h3>
+        <div className="account__icon mb-3">
+          <img src={logo} className="account_logo" />
+        </div>
         <div className="account__card">
+          <div className="account__head">
+            <h3 className="account__title">{t("auth.signup.heading")}</h3>
+            <h4 className="account__subhead subhead">
+              {t("auth.signup.subheading")}
+            </h4>
+          </div>
           <RegisterForm handleSubmit={onSubmit} isLoading={isLoading} />
           <div className="account__have-account mt-0">
-            <div to="/auth/login" className="mb-2 mt-3 account__already--text">
-              Already have an account?{" "}
-              <span>
-                {" "}
-                <strong className="login__link--text">
-                  <Link to="/auth/login">Login</Link>
-                </strong>{" "}
-                instead.
-              </span>
-            </div>
+            <p>
+              {t("auth.signup.already_have")}{" "}
+              <Link to="/auth/login">{t("auth.login.heading")}</Link>
+            </p>
           </div>
         </div>
       </div>

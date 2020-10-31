@@ -1,0 +1,155 @@
+.account {
+  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  overflow-y: auto;
+  @include themify($themes) {
+    background: themed("colorBackgroundBody");
+  }
+}
+
+.account__wrapper {
+  @include directify($directions) {
+    text-align: directed("left");
+  }
+  margin: auto;
+  padding: 10px;
+}
+
+.account__card {
+  @include themify($themes) {
+    background-color: themed("colorBackground");
+  }
+  background-color: #ffffff;
+  padding: 50px 60px;
+  max-width: 520px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.account__icon {
+  max-width: 120px;
+  margin: 0 auto;
+}
+
+.register__btns {
+  @include directify($directions) {
+    #{directed('margin-left')}: 0px !important;
+  }
+}
+
+.account__btns {
+  display: flex;
+  width: calc(100% + 10px);
+  @include directify($directions) {
+    #{directed('margin-right')}: 0px;
+    #{directed('margin-left')}: -10px;
+  }
+  margin-top: -10px;
+  margin-bottom: -20;
+
+  a {
+    @include directify($directions) {
+      #{directed('margin-right')}: 0px;
+      #{directed('margin-left')}: 10px;
+    }
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+}
+
+.account__btn {
+  width: 100%;
+  @include directify($directions) {
+    #{directed('margin-right')}: 0px;
+  }
+}
+
+.account__forgot-password {
+  position: absolute;
+  font-size: 11px;
+  line-height: 15px;
+  bottom: 18px;
+  @include directify($directions) {
+    #{directed('right')}: 0px;
+  }
+
+  a {
+    color: $color-blue;
+
+    &:hover {
+      color: $color-blue-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+.form__form-group--forgot {
+  margin-bottom: 40px;
+}
+
+.account__or {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+    height: 1px;
+    width: calc(50% - 90px);
+    background: #dddddd;
+    position: absolute;
+    top: 10px;
+  }
+
+  &:before {
+    @include directify($directions) {
+      #{directed('left')}: 0px;
+    }
+  }
+
+  &:after {
+    @include directify($directions) {
+      #{directed('right')}: 0px;
+    }
+  }
+}
+
+.account__head {
+  margin-bottom: 30px;
+  @include directify($directions) {
+    #{directed('padding-left')}: 10px;
+    #{directed('border-left')}: 4px solid $color-blue;
+  }
+}
+
+.account__have-account {
+  text-align: center;
+  margin-top: 20px;
+
+  a {
+    color: $color-blue;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-blue-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .account__card {
+    padding: 35px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .account__btns {
+    flex-wrap: wrap;
+  }
+}

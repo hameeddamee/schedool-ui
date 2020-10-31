@@ -1,11 +1,21 @@
 {
   "landing": {
-    "heading": "Create Schedools on the fly<br /><strong> Set Priority</strong> on your tasks<br /><strong>See others like you</strong> who are getting things done",
+    "heading": "Create Schedools on the fly<br /><strong> Set Priority</strong> on your tasks<br /><strong>See others</strong> like you who are <strong>getting things done</strong>",
     "subheading": "Create an account today to get started or login to",
     "subheading_continue": "continue."
   },
   "auth": {
-    "signup": "Signup",
-    "login": "Login"
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "signup": {
+      "doc_title": "Sign up - Create an account to continue",
+      "heading": "Sign Up",
+      "subheading": "Create an account",
+      "already_have": "Already have an account?"
+    },
+    "login": {
+      "heading": "Login"
+    }
   }
 }

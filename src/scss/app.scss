@@ -1,20 +1,21 @@
-@import 'settings/variable';  //themes' colors
+@import "settings/variable"; //themes' colors
 
 //vendor...
-@import './vendor';
+@import "./vendor";
 
 //base...
-@import 'generic/normalize.scss';
-@import 'generic/box-sizing.scss';
-@import './base/scaffolding';         // styles of base elements
-@import './base/typography';          // base styles of h1-h6, p, span
+@import "generic/normalize.scss";
+@import "generic/box-sizing.scss";
+@import "./base/scaffolding"; // styles of base elements
+@import "./base/typography"; // base styles of h1-h6, p, span
 
 //components...
-// @import './component/btn';                      // Each component file is imported here'
+@import "./component/form";
+@import "./component/btn";
 
 //pages...
-@import 'pages/landing';
+@import "pages/landing";
+@import "pages/account";
 
 //objects...
-@import 'objects/layout.scss';        // layout settings
-
+@import "objects/layout.scss"; // layout settings
