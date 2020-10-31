@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-// import Signup from "../pages/Auth/Signup/Signup";
-import Login from "../pages/Auth/Login/Login";
+import Signup from "../pages/Auth/Signup/Signup";
+// import Login from "../pages/Auth/Login/Login";
 // import ForgotPassword from "../pages/Auth/ForgotPassword/ForgotPassword";
 // import SelectUser from "../pages/Auth/SelectUser/SelectUserRole";
 // import SignupSuccess from "../pages/Auth/SignupSuccess/SignupSuccess";
@@ -12,9 +12,9 @@ import Login from "../pages/Auth/Login/Login";
 
 export default () => (
   <Switch>
-    <Route exact path="/" component={Login} />
-    {/* <Route exact path="/auth/signup" component={Signup} />
-    <Route exact path="/auth/login" component={Login} />
+    {/* <Route exact path="/" component={Login} /> */}
+    <Route exact path="/auth/signup" component={Signup} />
+    {/* <Route exact path="/auth/login" component={Login} />
     <Route exact path="/auth/forgot-password" component={ForgotPassword} />
     <Route exact path="/auth/select-user" component={SelectUser} />
     <Route exact path="/auth/signup-success" component={SignupSuccess} />

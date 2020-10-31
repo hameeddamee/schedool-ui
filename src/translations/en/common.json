@@ -1,3 +1,11 @@
 {
-  
+  "landing": {
+    "heading": "Create Schedools on the fly<br /><strong> Set Priority</strong> on your tasks<br /><strong>See others like you</strong> who are getting things done",
+    "subheading": "Create an account today to get started or login to",
+    "subheading_continue": "continue."
+  },
+  "auth": {
+    "signup": "Signup",
+    "login": "Login"
+  }
 }
