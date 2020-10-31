@@ -19,7 +19,7 @@ const Nav = () => {
               </p>
               <nav className="landing__menu-nav">
                 <Link className="landing__btn" to="/auth/signup">
-                  {t("auth.signup")}
+                  {t("auth.signup.heading")}
                 </Link>
               </nav>
             </div>

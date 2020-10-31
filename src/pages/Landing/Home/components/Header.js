@@ -29,13 +29,13 @@ const Header = () => {
               className="landing__btn landing__btn--header landing__btn--signup"
               to="/auth/signup"
             >
-              {t("auth.signup")}
+              {t("auth.signup.heading")}
             </Link>
             <Link
               className="landing__btn landing__btn--header"
               to="/auth/login"
             >
-              {t("auth.login")}
+              {t("auth.login.heading")}
             </Link>
           </Col>
         </Row>

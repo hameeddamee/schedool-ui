@@ -71,7 +71,7 @@
   position: absolute;
   font-size: 11px;
   line-height: 15px;
-  bottom: 18px;
+  bottom: -10px;
   @include directify($directions) {
     #{directed('right')}: 0px;
   }

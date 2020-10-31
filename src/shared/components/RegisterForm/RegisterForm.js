@@ -15,18 +15,14 @@ const RegisterForm = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const { handleSubmit, isLoading } = props;
   const initialValues = {
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
-    phoneNumber: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().min(2).max(20).required(),
-    lastName: Yup.string().min(2).max(20).required(),
+    name: Yup.string().min(5).max(20).required(),
     email: Yup.string().email().required(),
-    phoneNumber: Yup.string().required(),
     password: Yup.string()
       .matches(
         passwordPattern,

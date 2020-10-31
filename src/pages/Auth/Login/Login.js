@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import { Button } from "reactstrap";
@@ -7,18 +7,18 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import EyeIcon from "mdi-react/EyeOffOutlineIcon";
 import EyeIcon2 from "mdi-react/EyeIcon";
+import { useTranslation } from "react-i18next";
 
-// import logo from "../../../shared/assets/img/fitted-logo.png";
+const logo = `${process.env.PUBLIC_URL}/assets/img/landing/logo.png`;
 
 import { isEmpty } from "../../../shared/helpers/validationHelpers";
 import { passwordPattern } from "../../../shared/helpers/validationHelpers";
 import * as authAction from "../../../redux/actions/authActions";
 
 import Input from "../../../shared/components/Form/Input";
-import AuthGoogleBtn from "../../../shared/components/AuthBtn/GoogleAuthBtn";
-import FBAuthBtn from "../../../shared/components/AuthBtn/FBAuthBtn";
 
 const Login = (props) => {
+  const [t] = useTranslation("common");
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
@@ -37,7 +37,6 @@ const Login = (props) => {
   });
 
   const dispatch = useDispatch();
-  const history = useHistory();
   const isLoading = useSelector((state) => state.auth.isLoading);
   const errorMsg = useSelector((state) => state.auth.errorMsg);
 
@@ -63,12 +62,15 @@ const Login = (props) => {
     <div className="account account--photo">
       <div className="account__wrapper">
         <div className="account__icon mb-3">
-          {/* <img src={logo} /> */}
+          <img src={logo} />
         </div>
-        <p className="account__sub mb-3">
-          Welcome to <span id="fitted__bold">Fitted</span> the best tailoring management solution
-        </p>
         <div className="account__card">
+          <div className="account__head">
+            <h3 className="account__title">{t("auth.login.heading")}</h3>
+            <h4 className="account__subhead subhead">
+              {t("auth.login.subheading")}
+            </h4>
+          </div>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -81,14 +83,14 @@ const Login = (props) => {
                     className="input__text--field user-box"
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("auth.email")}
                   />
 
                   <Input
                     className="input__text--field user-box"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Password"
+                    placeholder={t("auth.password")}
                   >
                     <button
                       type="button"
@@ -97,35 +99,23 @@ const Login = (props) => {
                       }`}
                       onClick={(e) => handleShowPassword(e)}
                     >
-                      {showPassword ? (
-                        <EyeIcon2 />
-                      ) : (
-                        <EyeIcon/>
-                      )}
+                      {showPassword ? <EyeIcon2 /> : <EyeIcon />}
                     </button>
                   </Input>
 
-                  <div className="account__forgot-password">
-                    <Link
-                      to="/auth/forgot-password"
-                      className="forgot__password--text"
-                    >
-                      Forgot password?
-                    </Link>
-                  </div>
-                  <div className="account__btns register__btns">
+                  <div className="account__btns register__btns mt-1">
                     <Button
                       type="submit"
                       color="primary"
                       className="account__btn account__btn--primary btn"
-                      disabled={!formik.isValid || isLoading}
+                      disabled={isLoading}
                     >
                       {isLoading ? (
                         <Fragment>
                           Loading <span className="loading arrow"></span>
                         </Fragment>
                       ) : (
-                        "Sign in"
+                        t("auth.login.heading")
                       )}
                     </Button>
                   </div>
@@ -133,22 +123,12 @@ const Login = (props) => {
               );
             }}
           </Formik>
+
           <div className="account__have-account mt-0">
-          <div
-              to="/auth/signup"
-              className="mb-2 mt-3 account__already--text"
-            >
-              Don't have an account? <span> <strong className="login__link--text"><Link to="/auth/signup">Sign up</Link></strong> instead.</span>
-            </div>
-            <div className="account__social">
-              <span className="account__social-text">
-                Or{" "}
-                <strong className="account__social-text--bold">Login</strong>{" "}
-                with
-              </span>
-              <AuthGoogleBtn isLogin />
-              <FBAuthBtn isLogin />
-            </div>
+            <p>
+              {t("auth.login.account_not_have")}{" "}
+              <Link to="/auth/signup">Sign up</Link>
+            </p>
           </div>
         </div>
       </div>

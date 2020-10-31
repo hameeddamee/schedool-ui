@@ -35,7 +35,7 @@ const Signup = () => {
     <div className="account">
       <div className="account__wrapper">
         <div className="account__icon mb-3">
-          <img src={logo} className="account_logo" />
+          <img src={logo} />
         </div>
         <div className="account__card">
           <div className="account__head">

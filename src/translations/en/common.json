@@ -15,7 +15,10 @@
       "already_have": "Already have an account?"
     },
     "login": {
-      "heading": "Login"
+      "heading": "Login",
+      "subheading": "Enter credentials",
+      "forgot_password": "Forgot password?",
+      "account_not_have": "Don't have an account?"
     }
   }
 }
