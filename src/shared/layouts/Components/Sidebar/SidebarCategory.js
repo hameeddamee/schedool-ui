@@ -8,7 +8,7 @@ const SidebarCategory = ({ id, title, icon, isNew, children }) => {
 
   const categoryClass = classNames({
     "sidebar__category-wrap": true,
-    "sidebar__category-wrap--open": collapse
+    "sidebar__category-wrap--open": collapse,
   });
 
   const toggle = () => {
@@ -22,7 +22,7 @@ const SidebarCategory = ({ id, title, icon, isNew, children }) => {
         className="sidebar__link sidebar__category"
         onClick={toggle}
       >
-        {icon ? <span className={`sidebar__link-icon fas fa-${icon}`} /> : ""}
+        {icon ? <span className={`sidebar__link-icon lnr lnr-${icon}`} /> : ""}
         <p className="sidebar__link-title">
           {title}
           {isNew && <span className="sidebar__category-new" />}
@@ -42,12 +42,12 @@ SidebarCategory.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string,
   isNew: PropTypes.bool,
-  children: PropTypes.arrayOf(PropTypes.element).isRequired
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 SidebarCategory.defaultProps = {
   icon: "",
-  isNew: false
+  isNew: false,
 };
 
 export default SidebarCategory;

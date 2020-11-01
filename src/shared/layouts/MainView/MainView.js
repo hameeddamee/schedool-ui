@@ -43,7 +43,6 @@ const MainView = ({
     layout: true,
     "layout--collapse": sidebar.collapse,
   });
-  console.log("I got to main");
 
   return (
     <div>

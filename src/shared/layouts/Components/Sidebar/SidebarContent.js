@@ -11,38 +11,19 @@ const SidebarContent = ({ onClick, currentUser }) => {
     <div className="sidebar__content">
       <ul className="sidebar__block">
         <SidebarLink
-          id="dashboard-link"
-          title="Dashboard"
-          icon="tachometer-alt"
+          title="Tasks"
+          icon="book"
           className="sidebar__link"
-          route="/dashboard"
+          route="/task"
           onClick={hideSidebar}
         />
-        <SidebarCategory id="setting-link" title="Settings" icon="cog">
-          <SidebarLink title="KYC" route="/kyc" onClick={hideSidebar} />
-          <SidebarLink title="Profile" route="/profile" onClick={hideSidebar} />
-        </SidebarCategory>
-
-        {currentUser.role === 2 && currentUser.isVerified === "true" ? (
-          <SidebarCategory
-            id="customer-link"
-            title="Customer List"
-            icon="user-plus"
-          >
-            <SidebarLink
-              title="Add Customer"
-              route="/signup-customer"
-              onClick={hideSidebar}
-            />
-            <SidebarLink
-              title="Pending Verification"
-              route="/unverified-customers"
-              onClick={hideSidebar}
-            />
-          </SidebarCategory>
-        ) : (
-          ""
-        )}
+        <SidebarLink
+          title="Users"
+          route="/user"
+          onClick={hideSidebar}
+          icon="user"
+          className="sidebar__link"
+        />
       </ul>
     </div>
   );

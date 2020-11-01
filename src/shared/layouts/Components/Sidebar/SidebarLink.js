@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const SidebarLink = ({ id, title, icon, newLink, route, onClick }) => (
   <NavLink to={route} onClick={onClick} activeClassName="sidebar__link-active">
     <li id={id} className="sidebar__link">
-      {icon ? <span className={`fas fa-${icon} sidebar__link-icon`} /> : ""}
+      {icon ? <span className={`lnr lnr-${icon} sidebar__link-icon`} /> : ""}
       <p className="sidebar__link-title">
         {title}
         {newLink ? (
@@ -26,14 +26,14 @@ SidebarLink.propTypes = {
   icon: PropTypes.string,
   newLink: PropTypes.bool,
   route: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 SidebarLink.defaultProps = {
   icon: "",
   newLink: false,
   route: "/",
-  onClick: () => {}
+  onClick: () => {},
 };
 
 export default SidebarLink;

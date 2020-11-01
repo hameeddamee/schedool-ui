@@ -25,7 +25,7 @@ export const checkAuthState = () => (dispatch) => {
     if (decoded.exp < currentTime) {
       dispatch(logoutUser());
       dispatch(setCurrentUser({}));
-      window.location.href = "/login";
+      window.location.href = "/auth";
     }
   }
 };

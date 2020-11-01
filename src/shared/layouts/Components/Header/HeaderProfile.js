@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import DownIcon from "mdi-react/ChevronDownIcon";
 import { Collapse } from "reactstrap";
 import TopbarMenuLink from "./TopbarMenuLink";
-// import profileImage from "../../../assets/img/profile-avatar.png";
-import isEmpty from "../../../helpers/validationHelpers";
+import { isEmpty } from "../../../helpers/validationHelpers";
 
 const HeaderProfile = ({ onClickHandler, currentUser }) => {
   const [collapse, setCollapse] = useState(false);
@@ -35,7 +34,7 @@ const HeaderProfile = ({ onClickHandler, currentUser }) => {
       )}
       <Collapse isOpen={collapse} className="topbar__menu-wrap">
         <div className="topbar__menu">
-          <TopbarMenuLink title="Profile" icon="user" path="/profile" />
+          <TopbarMenuLink title="Task" icon="book" path="/task" />
           <div className="topbar__menu-divider" />
           <div onClick={onClickHandler}>
             <TopbarMenuLink

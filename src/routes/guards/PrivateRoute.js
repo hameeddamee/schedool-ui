@@ -6,7 +6,7 @@ const PrivateRoute = ({ isAuthenticated, ...props }) => {
   if (isAuthenticated) {
     return <Route {...props} />;
   }
-  return <Redirect to="/login" />;
+  return <Redirect to="/auth" />;
 };
 
 let mapStateToProps = (state) => ({

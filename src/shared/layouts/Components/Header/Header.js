@@ -9,11 +9,8 @@ import {
 
 import HambugerBtn from "./HamburgerBtn";
 import HeaderProfile from "./HeaderProfile";
-import TopbarNotification from "./TopbarNotification";
 
 const Header = ({
-  user,
-  isAuthenticated,
   currentUser,
   logoutUser,
   changeMobileSidebarVisibility,
@@ -27,11 +24,10 @@ const Header = ({
             changeMobileSidebarVisibility={changeMobileSidebarVisibility}
             changeSidebarVisibility={changeSidebarVisibility}
           />
-          <Link className="topbar__logo" to="/dashboard_default" />
+          <Link className="topbar__logo" to="/" />
         </div>
 
         <div className="topbar__right">
-          <TopbarNotification />
           <HeaderProfile
             onClickHandler={logoutUser}
             currentUser={currentUser}

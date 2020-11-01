@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 
 const PublicRoute = ({ isAuthenticated, ...props }) => {
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/task" />;
   }
 
   return <Route {...props} />;
