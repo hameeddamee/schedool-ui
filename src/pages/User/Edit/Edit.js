@@ -31,7 +31,6 @@ const Edit = () => {
   }, [errorMsg]);
 
   const handleSubmit = (formValues) => {
-    console.log("formValues", formValues);
     dispatch(userActions.editUser(formValues, history));
   };
 
