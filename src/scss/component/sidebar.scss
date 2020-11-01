@@ -1,14 +1,16 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: 0;
+  @include directify($directions) {
+    #{directed('left')}: 0px;
+    transform: translateX(0);
+  }
   z-index: 99;
   height: 100vh;
   width: 240px;
   box-shadow: 0 1px 30px 1px rgba(0, 0, 0, 0.11);
   padding-top: 60px;
   transition: transform 0.3s, width 0.3s;
-  transform: translateX(calc(-100% - 20px));
 
   @include themify($themes) {
     background: themed("colorBackground");
@@ -19,7 +21,10 @@
   }
 
   &.sidebar--show {
-    transform: translateX(0);
+    display: block;
+    @include directify($directions) {
+      transform: #{directed("sidebar-close")};
+    }
 
     .sidebar__back {
       display: block;
@@ -42,6 +47,7 @@
       opacity: 1;
     }
   }
+  background: aliceblue;
 }
 
 .sidebar__scroll {
@@ -54,7 +60,9 @@
   .scrollbar-track {
     &.scrollbar-track-y {
       width: 2px;
-      margin-right: 3px;
+      @include directify($directions) {
+        #{directed('margin-right')}: 3px;
+      }
     }
 
     &.scrollbar-track-x {
@@ -85,7 +93,6 @@
 
 .sidebar__block {
   padding: 15px 0;
-  padding-top: 50px;
 
   @include themify($themes) {
     border-bottom: 1px solid themed("colorBorder");
@@ -97,17 +104,16 @@
 }
 
 .sidebar__link {
-  height: 40px;
+  height: 36px;
   width: 240px;
   transition: all 0.3s;
   position: relative;
   cursor: pointer;
   display: flex;
-  padding: 15px 20px;
+  padding: 11px 20px;
   overflow: hidden;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #d2d2d2;
 
   @include themify($themes) {
     color: themed("colorText");
@@ -116,19 +122,23 @@
   &:before {
     content: "";
     position: absolute;
-    left: 0;
+    @include directify($directions) {
+      #{directed('left')}: 0px;
+    }
     top: 0;
     height: 100%;
     width: 2px;
-    background: #006338;
+    background: $color-accent;
     opacity: 0;
     transition: all 0.3s;
   }
 
   p {
     position: absolute;
-    left: 43px;
-    width: 160px;
+    @include directify($directions) {
+      #{directed('left')}: 43px;
+    }
+    width: 180px;
     transition: left 0.3s;
     top: 50%;
     transform: translateY(-50%);
@@ -147,25 +157,21 @@
   }
 }
 
-.sidebar__category-wrap button {
-  font-family: "Montserrat", sans-serif;
-}
-
 .sidebar__link-title {
   margin: 0;
   font-size: 14px;
   line-height: 16px;
   position: relative;
   display: flex;
-  font-weight: 500;
 }
 
 .sidebar__link-icon {
-  margin-right: 10px;
+  @include directify($directions) {
+    #{directed('margin-right')}: 10px;
+  }
   font-size: 13px;
   line-height: 13px;
-  color: #006338;
-  fill: #006338;
+  color: #b1c3c8;
 }
 
 .sidebar__submenu {
@@ -178,10 +184,14 @@
     padding-top: 0;
 
     .sidebar__link {
-      padding-left: 53px;
+      @include directify($directions) {
+        #{directed('padding-left')}: 53px;
+      }
 
       p {
-        left: 53px;
+        @include directify($directions) {
+          #{directed('left')}: 53px;
+        }
       }
     }
   }
@@ -191,7 +201,9 @@
   }
 
   .sidebar__link {
-    padding-left: 43px;
+    @include directify($directions) {
+      #{directed('padding-left')}: 43px;
+    }
 
     &:hover {
       @include themify($themes) {
@@ -205,28 +217,22 @@
   }
 }
 
+.rtl-support {
+  .sidebar__category-icon {
+    transform: rotate(180deg);
+  }
+}
+
 .sidebar__category-icon {
   position: absolute;
-  right: 15px;
+  @include directify($directions) {
+    #{directed('right')}: 15px;
+  }
   font-size: 10px;
   line-height: 14px;
   opacity: 1;
   transition: opacity 0.5s 0.2s, transform 0.3s;
   color: $color-gray;
-}
-
-.sidebar__help {
-  position: absolute;
-  bottom: 70px;
-  margin: 3px auto;
-  color: $color-gray;
-  display: flex !important;
-  justify-content: center;
-  width: 100%;
-
-  &:hover {
-    color: lighten($color-gray, 10%);
-  }
 }
 
 .sidebar__link-badge {
@@ -236,7 +242,9 @@
   font-size: 8px;
   font-weight: 400;
   padding: 2px;
-  margin-left: 5px;
+  @include directify($directions) {
+    #{directed('margin-left')}: 5px;
+  }
   line-height: 9px;
   position: relative;
   text-transform: uppercase;
@@ -244,7 +252,9 @@
 
   span {
     position: absolute;
-    left: 0;
+    @include directify($directions) {
+      #{directed('left')}: 0px;
+    }
     top: 3px;
     width: 26px;
     text-align: center;
@@ -269,17 +279,24 @@
   border-radius: 50%;
   top: -3px;
   display: block;
-  margin-left: 5px;
+  @include directify($directions) {
+    #{directed('margin-left')}: 5px;
+  }
   background: $color-red;
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 576px) {
   .sidebar {
-    transform: translateX(0);
-
     &.sidebar--no-desktop {
-      transform: translateX(calc(-100% - 20px));
-
+      @include directify($directions) {
+        //transform: translateX(calc(directed('-')100% directed('-') 20px));
+      }
       &.sidebar--show {
         transform: translateX(0);
       }
@@ -327,28 +344,38 @@
 
       .sidebar__submenu-wrap {
         position: absolute;
-        left: 55px;
+        @include directify($directions) {
+          #{directed('left')}: 55px;
+        }
         width: 0;
         transition: 0.3s;
         overflow: hidden;
 
         .sidebar__link {
           width: 185px;
-          padding-left: 15px;
+          @include directify($directions) {
+            #{directed('padding-left')}: 15px;
+          }
 
           p {
             position: relative;
-            left: 0;
+            @include directify($directions) {
+              #{directed('left')}: 0px;
+            }
             animation: none;
           }
         }
 
         .sidebar__submenu-wrap {
           position: relative;
-          left: 0;
+          @include directify($directions) {
+            #{directed('left')}: 0px;
+          }
 
           .sidebar__link {
-            padding-left: 30px;
+            @include directify($directions) {
+              #{directed('padding-left')}: 30px;
+            }
           }
         }
       }
@@ -360,7 +387,9 @@
 
         p {
           position: absolute;
-          left: 70px;
+          @include directify($directions) {
+            #{directed('left')}: 70px;
+          }
           width: 160px;
         }
 
@@ -379,7 +408,9 @@
       }
 
       .scrollbar-track.scrollbar-track-y {
-        margin-right: 188px;
+        @include directify($directions) {
+          #{directed('margin-right')}: 188px;
+        }
       }
     }
   }

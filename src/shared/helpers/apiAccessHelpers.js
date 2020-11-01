@@ -34,7 +34,7 @@ export const createFormData = async (formInput) => {
   return formData;
 };
 
-export const getData = async (url = "", headerVal = {}, data = {}) => {
+export const getData = async (url = "", headerVal = {}) => {
   const headers = new Headers();
 
   for (const key in headerVal) {
@@ -45,6 +45,26 @@ export const getData = async (url = "", headerVal = {}, data = {}) => {
 
   const response = await fetch(url, {
     method: "GET",
+    mode: "cors",
+    headers: headers,
+  });
+  let result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.error || result.message);
+  }
+  return result;
+};
+export const deleteData = async (url = "", headerVal = {}) => {
+  const headers = new Headers();
+
+  for (const key in headerVal) {
+    if (headerVal.hasOwnProperty(key)) {
+      headers.append(key, headerVal[key]);
+    }
+  }
+
+  const response = await fetch(url, {
+    method: "DELETE",
     mode: "cors",
     headers: headers,
   });

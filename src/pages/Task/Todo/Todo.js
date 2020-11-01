@@ -1,63 +1,89 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "reactstrap";
-// import { useTranslation } from "react-i18next";
-// import { dispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { toastr } from "react-redux-toastr";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-// import todoActions from "../../redux/actions/todoActions";
+import { isEmpty } from "../../../shared/helpers/validationHelpers";
+import * as todoActions from "../../../redux/actions/taskActions";
+import todoAction from "../../../redux/actions/taskActions";
 
 const Todo = () => {
-  // const state = useSelector(state => state.state)
+  const [t] = useTranslation("common");
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.task.todos);
+  const theme = useSelector((state) => state.theme);
+  const rtl = useSelector((state) => state.rtl);
+  const incompleteTodos = useSelector((state) =>
+    state.task.priorityFilter
+      ? state.task.incompleteTodos.filter(
+          (todo) => todo.priority === state.task.priorityFilter
+        )
+      : state.task.incompleteTodos
+  );
 
-  // GET TODOS FROM STATE
-  // const todos = state.todos.priorityFilter
-  //   ? state.todos.todos.filter(
-  //       (todo) => todo.priority === state.todos.priorityFilter
-  //     )
-  //   : state.todos.todos;
-  // return { todos, theme: state.theme, rtl: state.rtl };
+  const completedTodos = useSelector((state) =>
+    state.task.priorityFilter
+      ? state.task.completedTodos.filter(
+          (todo) => todo.priority === state.task.priorityFilter
+        )
+      : state.task.completedTodos
+  );
+  const errorMsg = useSelector((state) => state.task.errorMsg);
 
-  // GET INCOMPLETETODOS FROM STATE
-  // this.state = {
-  //   incompleteTodos: props.todos.filter((todo) => !todo.completed),
-  //   completedTodos: props.todos.filter((todo) => todo.completed),
-  // };
+  useEffect(() => {
+    dispatch(todoActions.fetchAllTodos());
+  }, []);
 
-  // CALL ACTIONS
-  // todoActions
+  useEffect(() => {
+    toastr.clean();
+    if (!isEmpty(errorMsg)) {
+      toastr.error("Todo error", errorMsg, {
+        onHideComplete: () => dispatch(todoActions.clearMessages()),
+      });
+    }
+  }, [errorMsg]);
 
   return (
     <Container className="todo-app">
       <Row>
         <Col md={12}>
-          {/* <h3 className="page-title">{t("todo_application.page_title")}</h3> */}
+          <h3 className="page-title">{t("task.heading")}</h3>
         </Col>
       </Row>
       <Row>
-        <Col md={9} xl={10}>
-          <TodoList
-          // actions={actions}
-          // todos={incompleteTodos}
-          />
-          <Col md={12}>
-            <div className="todo-app__divider">
-              <div className="todo-app__divider-line" />
-              <p className="todo-app__divider-title">Done</p>
-              <div className="todo-app__divider-line" />
-            </div>
+        {todos.length > 0 && (
+          <Col md={9} xl={10}>
+            <TodoList
+              actions={todoActions}
+              todos={incompleteTodos}
+              theme={theme}
+              rtl={rtl.direction}
+            />
+            <Col md={12}>
+              <div className="todo-app__divider">
+                <div className="todo-app__divider-line" />
+                <p className="todo-app__divider-title">Done</p>
+                <div className="todo-app__divider-line" />
+              </div>
+            </Col>
+            <TodoList
+              completed
+              actions={todoActions}
+              todos={completedTodos}
+              theme={theme}
+              rtl={rtl.direction}
+            />
           </Col>
-          <TodoList
-          // completed
-          // actions={actions}
-          // todos={completedTodos}
-          />
-        </Col>
+        )}
+
         <Col md={3} xl={2}>
           <TodoInput
-          // addTodo={actions.addTodo}
-          // togglePriorityFilter={actions.togglePriorityFilter}
-          // theme={theme}
-          // rtl={rtl.direction}
+            action={todoActions.addTodo}
+            togglePriorityFilter={todoAction.togglePriorityFilter}
+            theme={theme}
+            rtl={rtl.direction}
           />
         </Col>
       </Row>

@@ -3,20 +3,18 @@
 }
 
 .todo__checkbox {
-
   input:checked ~ .todo__checkbox-label {
     color: $color-additional;
     text-decoration: line-through;
   }
   .todo__checkbox-label {
     @include directify($directions) {
-      text-align: #{directed('left')};
+      text-align: #{directed("left")};
     }
   }
 }
 
 .todo-app {
-
   .card {
     padding-bottom: 20px;
   }
@@ -44,7 +42,7 @@
 
   .todo__item {
     display: flex;
-    @media screen and (max-width: 450px){
+    @media screen and (max-width: 450px) {
       padding-bottom: 50px;
     }
 
@@ -66,7 +64,7 @@
             #{directed('margin-left')}: auto;
           }
           display: flex;
-          @media screen and (max-width: 450px){
+          @media screen and (max-width: 450px) {
             position: absolute;
             bottom: 40px;
             left: 50px;
@@ -97,11 +95,12 @@
           }
         }
 
-        .todo__due-date, .todo__priority {
+        .todo__due-date,
+        .todo__priority {
           padding: 0 5px;
 
           @include themify($themes) {
-            background-color: themed('colorHover');
+            background-color: themed("colorHover");
           }
         }
 
@@ -116,24 +115,24 @@
             #{directed('margin-right')}: 5px;
           }
           @include themify($themes) {
-            color: themed('colorText');
+            color: themed("colorText");
           }
         }
       }
 
       .todo__content {
         @include directify($directions) {
-          text-align: directed('left');
+          text-align: directed("left");
         }
         display: flex;
         justify-content: space-between;
 
         .todo__description {
           @include themify($themes) {
-            color: themed('colorText');
+            color: themed("colorText");
           }
           max-width: 65%;
-          @media screen and (max-width: 450px){
+          @media screen and (max-width: 450px) {
             max-width: 100%;
           }
         }
@@ -146,9 +145,9 @@
           align-self: flex-end;
           padding: 5px;
           @include themify($themes) {
-            background-color: themed('colorHover');
+            background-color: themed("colorHover");
           }
-          @media screen and (max-width: 450px){
+          @media screen and (max-width: 450px) {
             bottom: -30px;
           }
 
@@ -166,19 +165,46 @@
             }
           }
         }
+
+        .todo__edit-btn {
+          border: none;
+          position: relative;
+          color: #999999;
+          cursor: pointer;
+          align-self: flex-end;
+          padding: 5px;
+          @include themify($themes) {
+            background-color: themed("colorHover");
+          }
+          @media screen and (max-width: 450px) {
+            bottom: -30px;
+          }
+
+          svg {
+            height: 16px;
+            width: 16px;
+            fill: $color-additional;
+          }
+
+          &:hover {
+            color: $color-yellow-hover;
+
+            svg {
+              fill: $color-yellow-hover;
+            }
+          }
+        }
       }
-
     }
-
   }
 
   .todo__item-comleted {
-
     h3 {
       text-decoration: line-through;
     }
 
-    h3, .todo__content {
+    h3,
+    .todo__content {
       color: #999999;
     }
   }
@@ -205,7 +231,7 @@
     .todo__priority-filter {
       align-self: flex-start;
       @include directify($directions) {
-        text-align: directed('left');
+        text-align: directed("left");
       }
       margin-bottom: 20px;
 
@@ -273,7 +299,7 @@
       border-radius: 50%;
       background-color: #fafbfe;
       opacity: 0;
-      transition: .2s;
+      transition: 0.2s;
     }
 
     .todo__filter-radio:checked + label:after {
@@ -387,7 +413,6 @@
       width: 10px;
     }
   }
-
 }
 
 .todo__add-modal {
@@ -395,7 +420,7 @@
 
   .modal-content {
     @include themify($themes) {
-      background-color: themed('colorBackgroundBody');
+      background-color: themed("colorBackgroundBody");
     }
   }
 
@@ -405,15 +430,14 @@
 
   .form__form-group {
     @include directify($directions) {
-      text-align: directed('left');
+      text-align: directed("left");
     }
 
     .form__form-group-field input,
     .form__form-group-field textarea {
-
       @include themify($themes) {
-        border: 1px solid themed('colorFieldsBorder');
-        color: themed('colorText');
+        border: 1px solid themed("colorFieldsBorder");
+        color: themed("colorText");
       }
     }
 
@@ -421,5 +445,4 @@
       display: block;
     }
   }
-
 }
