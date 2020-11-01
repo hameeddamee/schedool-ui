@@ -1,50 +1,35 @@
 import {
-  SET_CURRENT_USER,
-  CLEAR_CURRENT_USER,
-  GET_PROFILE,
-  CLEAR_USER,
-  PROFILE_ERROR,
+  SET_USERS,
+  USER_ERRORS,
+  IS_LOADING,
+  IS_LOADING_FALSE,
+  CLEAR_MESSAGES,
 } from "../actions/userActions";
 
 const initialState = {
+  all: [],
+  selected: {},
   isLoading: false,
-  errors: null,
-  loadingUserInfo: false,
-  userInfo: {},
+  errorMsg: null,
+  successMsg: null,
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_PROFILE:
-      let { user, bankName } = payload;
+    case SET_USERS:
+      return Object.assign({}, state, {
+        all: payload,
+      });
 
-      return {
-        ...state,
-        profile: { ...user },
-        bankDetails: {
-          bankAccountName: user.bankAccountName,
-          bankAccountNumber: user.bankAccountNumber,
-          bankCode: bankName,
-        },
-        isLoading: false,
-      };
-
-    case CLEAR_USER:
-      return {
-        ...state,
-        agentprofiles: [],
-        profile: {},
-        bankDetails: {
-          bankAccountName: "",
-          bankAccountNumber: "",
-          bankCode: "",
-        },
-        registeredCustomers: {},
-        isLoading: false,
-        errors: null,
-      };
-
+    case USER_ERRORS:
+      return { ...state, errorMsg: payload, isLoading: false };
+    case CLEAR_MESSAGES:
+      return { ...state, successMsg: "", errorMsg: "" };
+    case IS_LOADING:
+      return { ...state, isLoading: true };
+    case IS_LOADING_FALSE:
+      return { ...state, isLoading: false };
     default:
       return state;
   }

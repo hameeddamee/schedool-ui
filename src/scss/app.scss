@@ -16,6 +16,7 @@
 @import "./component/form";
 @import "./component/modal";
 @import "./component/sidebar";
+@import "./component/panel";
 @import "./component/spinner";
 @import "./component/todo";
 @import "./component/topbar";
@@ -23,6 +24,7 @@
 //pages...
 @import "pages/account";
 @import "pages/landing";
+@import "pages/user";
 
 //objects...
 @import "objects/layout.scss"; // layout settings

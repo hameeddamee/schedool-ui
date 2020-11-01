@@ -24,5 +24,9 @@
   },
   "task": {
     "heading": "Todo"
+  },
+  "user": {
+    "heading": "All Users",
+    "subheading": "Others who are also getting things done"
   }
 }

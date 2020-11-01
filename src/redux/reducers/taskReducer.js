@@ -49,7 +49,7 @@ const todoReducer = (state = initialState, action) => {
     case TASK_ERRORS:
       return { ...state, errorMsg: action.payload, isLoading: false };
     case CLEAR_MESSAGES:
-      return { ...state, successMsg: "", errorMsg: "", showAuthMsg: false };
+      return { ...state, successMsg: "", errorMsg: "" };
     case IS_LOADING:
       return { ...state, isLoading: true };
     case IS_LOADING_FALSE:
