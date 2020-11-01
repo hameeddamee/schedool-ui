@@ -2,6 +2,7 @@ import { isEmpty } from "../../shared/helpers/validationHelpers";
 
 import {
   SET_CURRENT_USER,
+  CLEAR_CURRENT_USER,
   AUTH_ERRORS,
   CLEAR_MESSAGES,
   IS_LOADING,
@@ -30,6 +31,16 @@ export default function (state = initialState, { type, payload }) {
         user: payload,
         isLoading: false,
         role: payload.role,
+      };
+    case CLEAR_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {},
+        isLoading: false,
+        errorMsg: null,
+        successMsg: null,
+        isPasswordReset: false,
       };
     case AUTH_ERRORS:
       return { ...state, errorMsg: payload, isLoading: false };
