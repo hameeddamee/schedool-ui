@@ -1,22 +1,14 @@
 import config from "../../config";
-
-export const environments = {
-  production: "production",
-  development: "development",
-  staging: "staging",
-};
-
 export const getBaseURL = () => {
   const processEnv = process.env.NODE_ENV;
-  console.log('processEnv', processEnv)
 
   switch (processEnv) {
-    case environments.production:
-      return config.Urls.baseStage;
-    case environments.development:
+    case "production":
+      return config.Urls.baseProd;
+    case "development":
       return config.Urls.baseDev;
     default:
-      return config.Urls.baseStage;
+      return config.Urls.baseDev;
   }
 };
 

@@ -1,30 +1,36 @@
 import React from "react";
-import successLogo from "../../assets/img/tick.svg";
-// import errorLogo from "../../assets/img/close.svg";
-import { Link, Redirect} from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { Link, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import successLogo from "../../assets/icon/tick.svg";
+import errorLogo from "../../assets/icon/close.svg";
 
 const AuthMessage = ({ title, message, isError, btnProps }) => {
   const showAuthMsg = useSelector((state) => state.auth.showAuthMsg);
 
-
-  if(!showAuthMsg){
-    return <Redirect to="/auth/login"/>
+  if (!showAuthMsg) {
+    return <Redirect to="/auth/login" />;
   }
-  
+
   return (
-    <div className="account account--photo">
-      <div className="wrapper__user--select">
-        <div className="account__wrapper">
-          <div className="account__icon">
-            {/* <img src={isError ? errorLogo : successLogo} /> */}
+    <div className="account">
+      <div className="account__wrapper">
+        <div className="account__card">
+          <div className="account__icon account__icon--small mb-3">
+            <img src={isError ? errorLogo : successLogo} />
+          </div>
+          <div className="account__head">
+            <h3 className="account__title text-center">{title}</h3>
+            <h4 className="account__subhead subhead">{message}</h4>
           </div>
 
-          <h2 className="message__header text-center mb-5 mt-5">{title}</h2>
-          <p className="text-center mt-3 mb-3 success__text">{message}</p>
           <div className="text-center">
-            <h4 >
-              {btnProps && <Link to={btnProps.linkTo} className="link__to mt-3">{btnProps.text}</Link>}
+            <h4>
+              {btnProps && (
+                <Link to={btnProps.linkTo} className="btn btn-primary mt-3">
+                  {btnProps.text}
+                </Link>
+              )}
             </h4>
           </div>
         </div>

@@ -34,7 +34,7 @@ const Signup = () => {
   return (
     <div className="account">
       <div className="account__wrapper">
-        <div className="account__icon mb-3">
+        <div className="account__icon">
           <img src={logo} />
         </div>
         <div className="account__card">

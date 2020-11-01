@@ -32,6 +32,10 @@
 .account__icon {
   max-width: 120px;
   margin: 0 auto;
+
+  &--small {
+    width: 45px;
+  }
 }
 
 .register__btns {
