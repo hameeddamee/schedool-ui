@@ -8,6 +8,7 @@ import TodoList from "./components/TodoList";
 import { isEmpty } from "../../../shared/helpers/validationHelpers";
 import * as todoActions from "../../../redux/actions/taskActions";
 import todoAction from "../../../redux/actions/taskActions";
+import Spinner from "../../../shared/components/Spinner/Spinner";
 
 const Todo = () => {
   const [t] = useTranslation("common");
@@ -31,6 +32,7 @@ const Todo = () => {
       : state.task.completedTodos
   );
   const errorMsg = useSelector((state) => state.task.errorMsg);
+  const isLoading = useSelector((state) => state.task.isLoading);
 
   useEffect(() => {
     dispatch(todoActions.fetchAllTodos());
@@ -53,7 +55,11 @@ const Todo = () => {
         </Col>
       </Row>
       <Row>
-        {todos.length > 0 && (
+        {isLoading ? (
+          <Col md={9} xl={10}>
+            <Spinner />
+          </Col>
+        ) : (
           <Col md={9} xl={10}>
             <TodoList
               actions={todoActions}

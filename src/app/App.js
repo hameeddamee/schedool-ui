@@ -26,9 +26,9 @@ export const App = () => {
   useEffect(() => {
     store.dispatch(checkAuthState());
 
-    window.addEventListener("load", () => {
+    window.addEventListener("DOMContentLoaded", () => {
       setLoading(false);
-      setTimeout(() => setLoaded(true), 500);
+      setTimeout(() => setLoaded(true), 50);
     });
   }, [store]);
 

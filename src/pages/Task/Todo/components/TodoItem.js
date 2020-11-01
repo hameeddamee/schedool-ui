@@ -6,6 +6,8 @@ import NotebookEditIcon from "mdi-react/NotebookEditIcon";
 import classNames from "classnames";
 import TodoModal from "./TodoModal";
 
+import { formatToShort } from "../../../../shared/helpers/dateHelper";
+
 function init(todoFormState) {
   return { ...todoFormState, dueDate: new Date(todoFormState.dueDate) };
 }
@@ -77,7 +79,9 @@ const TodoItem = ({ actions, todo, theme, rtl }) => {
           <div className="todo__header">
             <h3>{title}</h3>
             <div className="todo__additional">
-              <p className="todo__due-date">Due date: {dueDate}</p>
+              <p className="todo__due-date">
+                Due date: {formatToShort(dueDate)}
+              </p>
               <span className="todo__priority">Priority:</span>
               <span className={priorityColorsClass} />
             </div>
