@@ -9,6 +9,6 @@
   },
   "Urls": {
     "baseDev": "http://localhost:4000/api/v1",
-    "baseProd": "http://localhost:4000/api/v1"
+    "baseProd": "https://schedool-api.herokuapp.com/"
   }
 }
