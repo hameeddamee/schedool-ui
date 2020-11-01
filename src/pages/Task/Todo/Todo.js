@@ -61,26 +61,32 @@ const Todo = () => {
           </Col>
         ) : (
           <Col md={9} xl={10}>
-            <TodoList
-              actions={todoActions}
-              todos={incompleteTodos}
-              theme={theme}
-              rtl={rtl.direction}
-            />
-            <Col md={12}>
-              <div className="todo-app__divider">
-                <div className="todo-app__divider-line" />
-                <p className="todo-app__divider-title">Done</p>
-                <div className="todo-app__divider-line" />
-              </div>
-            </Col>
-            <TodoList
-              completed
-              actions={todoActions}
-              todos={completedTodos}
-              theme={theme}
-              rtl={rtl.direction}
-            />
+            {todos.length > 0 ? (
+              <>
+                <TodoList
+                  actions={todoActions}
+                  todos={incompleteTodos}
+                  theme={theme}
+                  rtl={rtl.direction}
+                />
+                <Col md={12}>
+                  <div className="todo-app__divider">
+                    <div className="todo-app__divider-line" />
+                    <p className="todo-app__divider-title">Done</p>
+                    <div className="todo-app__divider-line" />
+                  </div>
+                </Col>
+                <TodoList
+                  completed
+                  actions={todoActions}
+                  todos={completedTodos}
+                  theme={theme}
+                  rtl={rtl.direction}
+                />
+              </>
+            ) : (
+              "You've not created any task"
+            )}
           </Col>
         )}
 
