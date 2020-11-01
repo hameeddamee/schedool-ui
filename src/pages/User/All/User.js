@@ -27,7 +27,11 @@ const User = () => {
         </Col>
       </Row>
       <Row>
-        <UserList users={users} onDeleteRow={onDeleteRow} t={t} />
+        {users.length > 0 ? (
+          <UserList users={users} onDeleteRow={onDeleteRow} t={t} />
+        ) : (
+          "Now user on border yet"
+        )}
       </Row>
     </Container>
   );
