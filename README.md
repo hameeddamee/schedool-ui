@@ -1,5 +1,6 @@
 # About Schedool
-Schedool is a todo app that allows you to not just schedule your to-dos but also set the priority levels 
+
+Schedool is a todo app that allows you to not just schedule your to-dos but also set the priority levels
 
 ## Technology Used
 
@@ -14,7 +15,6 @@ Schedool is a todo app that allows you to not just schedule your to-dos but also
 - [Setup](#Setup)
 - [Folder Structure](#folder-structure)
 - [Reuseable Components](#reuseable-components)
-- [Modularized Pages](#modularized-pages)
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
@@ -64,7 +64,6 @@ schedool/
 
 The reuseable components in this app can be found in the **_shared_** folder.
 
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -88,4 +87,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
